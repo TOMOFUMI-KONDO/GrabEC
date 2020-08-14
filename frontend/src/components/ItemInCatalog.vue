@@ -12,17 +12,12 @@
           <p class="mb-0">在庫：{{ stock }}</p>
         </div>
         <div class="d-flex align-items-center">
-          <div class="mr-5">
-            <FilledStar v-for="n of review" :key="n" class="mr-1" />
-            <StrokeStar
-              v-for="n of 5 - review"
-              :key="n + review"
-              class="mr-1"
-            />
-          </div>
-          <b-button class="add-cart-button" @click.stop="addToCart">
-            カートに追加
-          </b-button>
+          <Stars :review="review" class="mr-5" />
+          <OutlineButton
+            class="add-cart-button"
+            text="カートに追加"
+            handle-click="addToCart"
+          />
         </div>
       </div>
     </div>
@@ -30,13 +25,13 @@
 </template>
 
 <script>
-import FilledStar from "@/components/FilledStar";
-import StrokeStar from "@/components/StrokeStar";
+import Stars from "@/components/Stars";
+import OutlineButton from "@/components/OutlineButton";
 
 export default {
   name: "ItemInCatalog",
   props: ["imgName", "name", "cost", "stock", "review"],
-  components: { FilledStar, StrokeStar },
+  components: { Stars, OutlineButton },
   computed: {
     src() {
       return require("@/assets/images/" + this.imgName);
