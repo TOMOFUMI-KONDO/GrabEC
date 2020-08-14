@@ -11,7 +11,7 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      message: ""
+      message: "hogehoge"
     };
   },
   mounted() {
