@@ -20,9 +20,9 @@
               class="mr-1"
             />
           </div>
-          <b-button class="add-cart-button" @click.stop="addToCart"
-            >カートに追加</b-button
-          >
+          <b-button class="add-cart-button" @click.stop="addToCart">
+            カートに追加
+          </b-button>
         </div>
       </div>
     </div>
