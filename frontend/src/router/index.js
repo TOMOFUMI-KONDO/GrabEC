@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Top from "../views/Top.vue";
+import Top from "@/views/Top.vue";
 import Catalog from "@/views/Catalog";
-import NotFound from "../views/NotFound.vue";
+import Cart from "@/views/Cart";
+import NotFound from "@/views/NotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes = [
     path: "/catalog",
     name: "Catalog",
     component: Catalog
+  },
+  {
+    path: "/cart",
+    name: "Cart",
+    component: Cart
   },
   {
     path: "*",
