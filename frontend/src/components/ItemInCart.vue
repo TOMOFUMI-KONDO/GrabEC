@@ -23,11 +23,7 @@
         </div>
         <div class="d-flex align-items-center">
           <Stars :review="review" class="mr-5" />
-          <OutlineButton
-            class="add-cart-button"
-            text="削除"
-            handle-click="remove"
-          />
+          <OutlineButton text="削除" :handle-click="remove" />
         </div>
       </div>
     </div>
@@ -77,17 +73,6 @@ export default {
     height: 30px;
     padding: 0;
     text-align: center;
-  }
-
-  .add-cart-button {
-    background: none;
-    border-color: #ff0070;
-    color: #ff0070;
-
-    &:hover {
-      background: #ff0070;
-      color: #fafafa;
-    }
   }
 }
 </style>
