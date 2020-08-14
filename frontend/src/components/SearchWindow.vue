@@ -1,13 +1,22 @@
 <template>
   <div class="search-window position-relative">
-    <b-input placeholder="キーワードから商品を探す" class="search-input" />
+    <b-input
+      v-on:keyup.enter="search"
+      placeholder="キーワードから商品を探す"
+      class="search-input"
+    />
     <b-icon icon="search" class="search-icon" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "SearchWindow"
+  name: "SearchWindow",
+  methods: {
+    search() {
+      this.$router.push({ name: "Catalog" });
+    }
+  }
 };
 </script>
 
