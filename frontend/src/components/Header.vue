@@ -1,6 +1,6 @@
 <template>
   <header class="d-flex justify-content-around align-items-center py-4">
-    <h1 class="mb-0">GrabEC</h1>
+    <h1 class="mb-0"><a href="/" class="text-light">GrabEC</a></h1>
     <div class="d-flex">
       <SearchWindow class="mr-3" />
       <CartButton />
@@ -23,12 +23,11 @@ header {
   background-color: #00b306;
   color: #fafafa;
 
-  .nav {
+  h1 {
     a {
-      font-weight: bold;
-
-      &.router-link-exact-active {
-        color: #ff0070;
+      &:hover {
+        text-decoration: none;
+        color: rgb(248, 249, 250) !important;
       }
     }
   }
