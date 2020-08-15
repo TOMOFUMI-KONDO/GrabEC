@@ -9,7 +9,7 @@ def say_hello(name):
   response = {'msg': "Hello {}".format(name)}
   return jsonify(response)
 
-@app.route("/api/product", methods=["GET"])
+@api.route("/api/product", methods=["GET"])
 # select * from products    
 def getProductList():
   product_list = db.session.query(Product).all()
