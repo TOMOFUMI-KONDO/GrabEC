@@ -11,8 +11,9 @@
       </div>
     </div>
     <ul class="catalog">
-      <li v-for="(item, index) in items" :key="index">
+      <li v-for="(item, index) in items" :key="item.id">
         <ItemInCart
+          :id="item.id"
           :index="index"
           :img-name="item.imgName"
           :name="item.name"
@@ -50,6 +51,7 @@ export default {
     return {
       items: [
         {
+          id: 1,
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           numberOfBuy: 1,
@@ -59,6 +61,7 @@ export default {
           review: 3
         },
         {
+          id: 2,
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           numberOfBuy: 1,
@@ -68,6 +71,7 @@ export default {
           review: 3
         },
         {
+          id: 3,
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           numberOfBuy: 1,
@@ -77,6 +81,7 @@ export default {
           review: 3
         },
         {
+          id: 4,
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           numberOfBuy: 1,

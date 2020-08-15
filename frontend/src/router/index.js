@@ -4,6 +4,7 @@ import Top from "@/views/Top.vue";
 import Catalog from "@/views/Catalog";
 import Cart from "@/views/Cart";
 import NotFound from "@/views/NotFound.vue";
+import Detail from "@/views/Detail";
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,12 @@ const routes = [
     path: "/catalog",
     name: "Catalog",
     component: Catalog
+  },
+  {
+    path: "/detail",
+    name: "Detail",
+    component: Detail,
+    props: true
   },
   {
     path: "/cart",
