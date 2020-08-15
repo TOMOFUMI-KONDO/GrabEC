@@ -41,6 +41,7 @@ import OutlineButton from "@/components/OutlineButton";
 export default {
   name: "ItemInCart",
   props: [
+    "id",
     "index",
     "imgName",
     "name",
@@ -63,7 +64,7 @@ export default {
   },
   methods: {
     jumpToDetail: function() {
-      alert("jump to detail!");
+      this.$router.push({ name: "Detail", params: { itemId: this.id } });
     },
     remove: function() {
       alert("remove from cart");

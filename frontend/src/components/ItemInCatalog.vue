@@ -27,7 +27,7 @@ import OutlineButton from "@/components/OutlineButton";
 
 export default {
   name: "ItemInCatalog",
-  props: ["imgName", "name", "cost", "area", "stock", "review"],
+  props: ["id", "imgName", "name", "cost", "area", "stock", "review"],
   components: { Stars, OutlineButton },
   computed: {
     src() {
@@ -35,10 +35,10 @@ export default {
     }
   },
   methods: {
-    jumpToDetail: () => {
-      alert("jump to detail!");
+    jumpToDetail: function() {
+      this.$router.push({ name: "Detail", params: { itemId: this.id } });
     },
-    addToCart: () => {
+    addToCart: function() {
       alert("add to cart");
     }
   }
