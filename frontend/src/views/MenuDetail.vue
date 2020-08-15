@@ -23,7 +23,13 @@
         />
       </li>
     </ul>
-    <OutlineButton text="まとめてカートに追加" handle-click="" />
+    <div class="text-center my-5">
+      <OutlineButton
+        text="まとめてカートに追加"
+        :handle-click="addAllToCart"
+        class="py-3 px-4"
+      />
+    </div>
   </div>
 </template>
 
