@@ -9,7 +9,8 @@
       <div class="d-flex justify-content-between">
         <div class="d-flex">
           <p class="mr-5 mb-0">{{ cost }}円</p>
-          <p class="mb-0">在庫：{{ stock }}</p>
+          <p class="mr-5 mb-0">在庫：{{ stock }}</p>
+          <p class="mb-0">産地：{{ area }}</p>
         </div>
         <div class="d-flex align-items-center">
           <Stars :review="review" class="mr-5" />
@@ -26,7 +27,7 @@ import OutlineButton from "@/components/OutlineButton";
 
 export default {
   name: "ItemInCatalog",
-  props: ["imgName", "name", "cost", "stock", "review"],
+  props: ["imgName", "name", "cost", "area", "stock", "review"],
   components: { Stars, OutlineButton },
   computed: {
     src() {

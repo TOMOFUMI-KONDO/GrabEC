@@ -13,13 +13,17 @@
             <div class="d-flex align-items-center">
               <p class="mb-0">×</p>
               <b-input
-                v-model="numberOfBuy"
+                :value="numberOfBuy"
+                min="1"
+                type="number"
                 class="number-of-buy"
                 @click.stop
+                @change="handleChange"
               />
             </div>
           </div>
-          <p class="mb-0">在庫：{{ stock }}</p>
+          <p class="mr-5 mb-0">在庫：{{ stock }}</p>
+          <p class="mb-0">産地：{{ area }}</p>
         </div>
         <div class="d-flex align-items-center">
           <Stars :review="review" class="mr-5" />
@@ -36,24 +40,42 @@ import OutlineButton from "@/components/OutlineButton";
 
 export default {
   name: "ItemInCart",
-  props: ["imgName", "name", "cost", "propsNumberOfBuy", "stock", "review"],
+  props: [
+    "index",
+    "imgName",
+    "name",
+    "cost",
+    "propNumberOfBuy",
+    "area",
+    "stock",
+    "review"
+  ],
   components: { Stars, OutlineButton },
-  data() {
-    return {
-      numberOfBuy: this.propsNumberOfBuy
-    };
-  },
   computed: {
     src() {
       return require("@/assets/images/" + this.imgName);
     }
   },
+  data() {
+    return {
+      numberOfBuy: this.propNumberOfBuy
+    };
+  },
   methods: {
-    jumpToDetail: () => {
+    jumpToDetail: function() {
       alert("jump to detail!");
     },
-    remove: () => {
+    remove: function() {
       alert("remove from cart");
+    },
+    handleChange: function(value) {
+      if (value > 0) {
+        this.numberOfBuy = value;
+        this.$emit("handle-change", {
+          value: value,
+          index: this.index
+        });
+      }
     }
   }
 };
@@ -69,7 +91,7 @@ export default {
   }
 
   .number-of-buy {
-    width: 30px;
+    width: 45px;
     height: 30px;
     padding: 0;
     text-align: center;
