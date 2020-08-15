@@ -1,9 +1,11 @@
 from backend import db
 from sqlalchemy.dialects.mysql import MEDIUMBLOB
 
+engine = create_engine('sqlite:///user.db')  # user.db というデータベースを使うという宣言です
+Base = declarative_base()  # データベースのテーブルの親です
+
 def init():
     db.create_all()
-
 class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
