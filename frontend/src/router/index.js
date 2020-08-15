@@ -5,6 +5,7 @@ import Catalog from "@/views/Catalog";
 import Cart from "@/views/Cart";
 import NotFound from "@/views/NotFound.vue";
 import Detail from "@/views/Detail";
+import MenuDetail from "@/views/MenuDetail";
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,11 @@ const routes = [
     path: "/",
     name: "Top",
     component: Top
+  },
+  {
+    path: "/menu-detail",
+    name: "MenuDetail",
+    component: MenuDetail
   },
   {
     path: "/catalog",

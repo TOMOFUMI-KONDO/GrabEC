@@ -16,13 +16,13 @@ class Product(db.Model):
 
     def to_dict(self):
         return dict(
-            id=self.id,
-            imgName=self.imgName,
-            name=self.name,
-            cost=self.cost,
-            area=self.area,
-            stock=self.stock,
-            review=self.review
+            id = self.id,
+            imgName = self.imgName,
+            name = self.name,
+            cost = self.cost,
+            area = self.area,
+            stock = self.stock,
+            review = self.review
         )
 
     def __repr__(self):
@@ -30,7 +30,7 @@ class Product(db.Model):
 
     def registProduct(product):
         record = Product(
-            imgName =product['imgName'],
+            imgName = product['imgName'],
             name = product['name'],
             cost = product['cost'],
             area = product['area'],
