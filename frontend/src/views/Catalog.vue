@@ -94,7 +94,7 @@ export default {
     };
   },
   created() {
-    const path = "/api/product";
+    const path = process.env.VUE_APP_BASE_URL + "api/product";
     axios
       .get(path)
       .then(response => {
