@@ -9,6 +9,7 @@ def say_hello(name):
   response = {'msg': "Hello {}".format(name)}
   return jsonify(response)
 
+# Product一覧取得
 @api.route("/api/product", methods=["GET"])
 # select * from products    
 def getProductList():
@@ -18,3 +19,7 @@ def getProductList():
     return[]
   else:
     return product_list
+# ショッピングカート
+@application.route('/api/add_to_cart', methods=['POST'])
+def add_to_cart():
+  item = json.loads(request.data.decode('utf-8'))
