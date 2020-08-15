@@ -19,7 +19,8 @@ def getProductList():
     return[]
   else:
     return product_list
+
 # ショッピングカート
-@app.route('/api/add_to_cart', methods=['POST'])
-def add_to_cart():
-  item = json.loads(request.data.decode('utf-8'))
+#@app.route('/api/add_to_cart', methods=['POST'])
+#def add_to_cart():
+  #item = json.loads(request.data.decode('utf-8'))
