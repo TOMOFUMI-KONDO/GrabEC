@@ -15,7 +15,7 @@ app.config.from_object('backend.config.BaseConfig')
 db = SQLAlchemy(app)
 
 # データベースのimport
-from backend.user import User
+#from backend.user import User
 
 app.register_blueprint(api, url_prefix="/api")
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
