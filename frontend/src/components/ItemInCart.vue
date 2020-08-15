@@ -13,9 +13,12 @@
             <div class="d-flex align-items-center">
               <p class="mb-0">×</p>
               <b-input
-                v-model="numberOfBuy"
+                :value="numberOfBuy"
+                min="1"
+                type="number"
                 class="number-of-buy"
                 @click.stop
+                @change="handleChange"
               />
             </div>
           </div>
@@ -38,22 +41,31 @@ export default {
   name: "ItemInCart",
   props: ["imgName", "name", "cost", "propsNumberOfBuy", "stock", "review"],
   components: { Stars, OutlineButton },
-  data() {
-    return {
-      numberOfBuy: this.propsNumberOfBuy
-    };
-  },
   computed: {
     src() {
       return require("@/assets/images/" + this.imgName);
     }
   },
+  data() {
+    return {
+      numberOfBuy: this.propNumberOfBuy
+    };
+  },
   methods: {
-    jumpToDetail: () => {
+    jumpToDetail: function() {
       alert("jump to detail!");
     },
-    remove: () => {
+    remove: function() {
       alert("remove from cart");
+    },
+    handleChange: function(value) {
+      if (value > 0) {
+        this.numberOfBuy = value;
+        this.$emit("handle-change", {
+          value: value,
+          index: this.index
+        });
+      }
     }
   }
 };
@@ -69,7 +81,7 @@ export default {
   }
 
   .number-of-buy {
-    width: 30px;
+    width: 45px;
     height: 30px;
     padding: 0;
     text-align: center;
