@@ -18,7 +18,8 @@ const routes = [
   {
     path: "/menu-detail",
     name: "MenuDetail",
-    component: MenuDetail
+    component: MenuDetail,
+    props: true
   },
   {
     path: "/catalog",

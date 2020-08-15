@@ -8,7 +8,7 @@
 <script>
 export default {
   name: "Menu",
-  props: ["imgName", "displayName"],
+  props: ["id", "imgName", "displayName"],
   computed: {
     src() {
       return require("@/assets/images/" + this.imgName);
@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$router.push({ name: "MenuDetail" });
+      this.$router.push({ name: "MenuDetail", params: { menuId: this.id } });
     }
   }
 };

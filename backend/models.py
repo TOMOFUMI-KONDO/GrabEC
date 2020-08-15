@@ -1,49 +1,70 @@
 from backend import db
 from sqlalchemy.dialects.mysql import MEDIUMBLOB
 
+
 def init():
-    db.create_all()
+  db.create_all()
+
 
 class Product(db.Model):
-    __tablename__ = 'products'
-    id = db.Column(db.Integer, primary_key=True)
-    imgName = db.Column(db.String(1000))
-    name = db.Column(db.String(1000))
-    cost = db.Column(db.Integer)
-    area = db.Column(db.String(1000))
-    stock = db.Column(db.Integer)
-    review = db.Column(db.Integer)
+  __tablename__ = 'products'
+  id = db.Column(db.Integer, primary_key=True)
+  imgName = db.Column(db.String(1000))
+  name = db.Column(db.String(1000))
+  cost = db.Column(db.Integer)
+  area = db.Column(db.String(1000))
+  stock = db.Column(db.Integer)
+  review = db.Column(db.Integer)
 
-    def to_dict(self):
-        return dict(
-            id = self.id,
-            imgName = self.imgName,
-            name = self.name,
-            cost = self.cost,
-            area = self.area,
-            stock = self.stock,
-            review = self.review
-        )
+  def to_dict(self):
+    return dict(
+        id=self.id,
+        imgName=self.imgName,
+        name=self.name,
+        cost=self.cost,
+        area=self.area,
+        stock=self.stock,
+        review=self.review
+    )
 
-    def __repr__(self):
-        return '<Product %r>' % self.name
+  def __repr__(self):
+    return '<Product %r>' % self.name
 
-    def registProduct(product):
-        record = Product(
-            imgName = product['imgName'],
-            name = product['name'],
-            cost = product['cost'],
-            area = product['area'],
-            stock = product['stock'],
-            review = product['review']
-        )
+  def registProduct(product):
+    record = Product(
+        imgName=product['imgName'],
+        name=product['name'],
+        cost=product['cost'],
+        area=product['area'],
+        stock=product['stock'],
+        review=product['review']
+    )
 
-        db.session.add(record)
-        db.session.commit()
+    db.session.add(record)
+    db.session.commit()
 
-        return product
+    return product
 
-#class UserSchema(ma.ModelSchema):
-    #class Meta:
-      #model = Product
-      #fields = ('id','imgName', 'name', 'cost', 'area', 'stock','review')
+
+class Menu(db.Model):
+  __tablename__ = 'menus'
+  id = db.Column(db.Integer, primary_key=True)
+  imgName = db.Column(db.String(1000))
+  displayName = db.Column(db.String(1000))
+  description = db.Column(db.String(1000))
+
+  def to_dict(self):
+    return dict(
+        id=self.id,
+        imgName=self.imgName,
+        displayName=self.displayName,
+        description=self.description
+    )
+
+  def __repr__(self):
+    return '<Menu %r>' % self.displayName
+
+# class UserSchema(ma.ModelSchema):
+  # class Meta:
+  #model = Product
+  #fields = ('id','imgName', 'name', 'cost', 'area', 'stock','review')

@@ -5,9 +5,10 @@
       <ul class="d-flex justify-content-between">
         <Menu
           v-for="menu in menus"
+          :id="menu.id"
           :img-name="menu.imgName"
           :display-name="menu.displayName"
-          :key="menu.imgName"
+          :key="menu.id"
         />
       </ul>
     </section>
@@ -27,11 +28,7 @@ export default {
   components: { SearchWindow, Menu },
   data() {
     return {
-      menus: [
-        { imgName: "卵焼き.jpg", displayName: "和食" },
-        { imgName: "オムライス.jpg", displayName: "洋食" },
-        { imgName: "餃子.jpg", displayName: "中華" }
-      ]
+      menus: []
     };
   }
 };
