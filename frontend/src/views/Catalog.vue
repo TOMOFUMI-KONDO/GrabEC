@@ -5,6 +5,7 @@
         :img-name="item.imgName"
         :name="item.name"
         :cost="item.cost"
+        :from="item.from"
         :stock="item.stock"
         :review="item.review"
       />
@@ -25,6 +26,7 @@ export default {
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           cost: 258,
+          from: Tokyo,
           stock: 10,
           review: 3
         },
@@ -32,6 +34,7 @@ export default {
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           cost: 258,
+          from: Tokyo,
           stock: 10,
           review: 3
         },
@@ -39,6 +42,7 @@ export default {
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           cost: 258,
+          from: Tokyo,
           stock: 10,
           review: 3
         },
@@ -46,6 +50,7 @@ export default {
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           cost: 258,
+          from: Tokyo,
           stock: 10,
           review: 3
         },
@@ -53,6 +58,7 @@ export default {
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           cost: 258,
+          from: Tokyo,
           stock: 10,
           review: 3
         },
@@ -60,6 +66,7 @@ export default {
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           cost: 258,
+          from: Tokyo,
           stock: 10,
           review: 3
         },
@@ -67,6 +74,7 @@ export default {
           imgName: "ベーコン.jpg",
           name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
           cost: 258,
+          from: Tokyo,
           stock: 10,
           review: 3
         }
