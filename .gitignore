@@ -1,6 +1,5 @@
 bin
 lib
-dist
 pyvenv.cfg
 __pycache__
 .vscode
