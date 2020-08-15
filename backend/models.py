@@ -1,21 +1,5 @@
 from backend import db
-
-class Task(db.Model):
-    __tablename__ = 'tasks'
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.Text)
-    text = db.Column(db.Text)
-
-    def to_dict(self):
-        return dict(
-            id=self.id,
-            title=self.title,
-            text=self.text
-        )
-
-    def __repr__(self):
-        return '<Task id={id} title={title!r}>'.format(
-            id=self.id, title=self.title)
+from sqlalchemy.dialects.mysql import MEDIUMBLOB
 
 def init():
     db.create_all()
@@ -23,12 +7,23 @@ def init():
 class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
-    imgName = db.Column(MEDIUMBLOB)
+    imgName = db.Column(db.String(1000))
     name = db.Column(db.String(1000))
     cost = db.Column(db.Integer)
     area = db.Column(db.String(1000))
     stock = db.Column(db.Integer)
     review = db.Column(db.Integer)
+
+    def to_dict(self):
+        return dict(
+            id=self.id,
+            imgName=self.imgName,
+            name=self.name,
+            cost=self.cost,
+            area=self.area,
+            stock=self.stock,
+            review=self.review
+        )
 
     def __repr__(self):
         return '<Product %r>' % self.name
