@@ -1,5 +1,5 @@
 # GrabEC
-
+# viviのテストブランチ　とりあえず書いたコードを上げるだけ　デバックは後回し
 ## 構成
 - backend (Flask)
 - requirements.txt (pipのパッケージ一覧)
