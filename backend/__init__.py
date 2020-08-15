@@ -3,7 +3,6 @@ from flask import Flask, render_template
 from flask_cors import CORS
 # データベースを利用するために追加
 from flask_sqlalchemy import SQLAlchemy
-from backend.api import api
 
 # Flaskアプリの生成
 app = Flask('GrabEC',
@@ -15,8 +14,9 @@ app.config.from_object('backend.config.BaseConfig')
 db = SQLAlchemy(app)
 
 # データベースのimport
-from backend.user import User
+#from backend.user import User
 
+from backend.api import api
 app.register_blueprint(api, url_prefix="/api")
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
