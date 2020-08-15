@@ -48,7 +48,7 @@ class Product(db.Model):
 
         return product
 
-class UserSchema(ma.ModelSchema):
-    class Meta:
-      model = Product
-      fields = ('id','imgName', 'name', 'cost', 'area', 'stock','review')
+#class UserSchema(ma.ModelSchema):
+    #class Meta:
+      #model = Product
+      #fields = ('id','imgName', 'name', 'cost', 'area', 'stock','review')
