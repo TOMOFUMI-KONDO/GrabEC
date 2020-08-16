@@ -58,8 +58,17 @@ export default {
     }
   },
   methods: {
-    addAllToCart() {
-      alert("全ての必要な食材をカートに追加しました。");
+    async addAllToCart() {
+      const path = process.env.VUE_APP_BASE_URL + "api/add";
+
+      for (const itemId of this.itemIds) {
+        let params = new URLSearchParams();
+        params.append("id", itemId);
+        params.append("stock", "1");
+        await this.$api.post(path, params).catch(error => console.log(error));
+      }
+
+      alert("必要な食材をまとめてカートに追加しました。");
     },
     isExistItem() {
       return this.items.length > 0;

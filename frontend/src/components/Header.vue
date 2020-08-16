@@ -1,6 +1,7 @@
 <template>
   <header class="d-flex justify-content-around align-items-center py-4">
     <h1 class="mb-0"><a href="/" class="text-light">GrabEC</a></h1>
+    <b-link href="catalog" class="text-light">商品一覧を見る</b-link>
     <div class="d-flex">
       <SearchWindow class="mr-3" />
       <CartButton />
@@ -24,6 +25,7 @@ header {
   color: #fafafa;
 
   h1 {
+    font-size: 64px;
     a {
       &:hover {
         text-decoration: none;

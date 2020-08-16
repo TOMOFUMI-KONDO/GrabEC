@@ -66,8 +66,15 @@ export default {
     jumpToDetail: function() {
       this.$router.push({ name: "Detail", params: { itemId: this.id } });
     },
-    remove: function() {
-      alert("remove from cart");
+    remove: async function() {
+      const path = process.env.VUE_APP_BASE_URL + "api/remove";
+      let params = new URLSearchParams();
+      params.append("id", this.id);
+      await this.$api.post(path, params).catch(error => console.log(error));
+
+      await this.$emit("on-remove", this.index);
+
+      alert("カートからアイテムを削除しました。");
     },
     handleChange: function(value) {
       if (value > 0) {
