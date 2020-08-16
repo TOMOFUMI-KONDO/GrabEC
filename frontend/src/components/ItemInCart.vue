@@ -92,7 +92,8 @@ export default {
   }
 
   .image {
-    max-width: 300px;
+    max-width: 200px;
+    max-height: 200px;
   }
 
   .number-of-buy {
