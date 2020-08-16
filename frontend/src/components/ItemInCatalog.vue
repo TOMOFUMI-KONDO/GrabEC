@@ -39,7 +39,11 @@ export default {
       this.$router.push({ name: "Detail", params: { itemId: this.id } });
     },
     addToCart: function() {
-      alert("add to cart");
+      const path = process.env.VUE_APP_BASE_URL + "api/add";
+      let params = new URLSearchParams();
+      params.append("id", this.id);
+      params.append("stock", "1");
+      this.$api.post(path, params).catch(error => console.log(error));
     }
   }
 };

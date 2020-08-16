@@ -13,7 +13,7 @@
             <!--              class="mx-1"-->
             <!--            />-->
           </div>
-          <Stars :review="review" class="mb-4" />
+          <Stars :review="review" class="mt-5 mb-4" />
           <p>在庫：{{ stock }}</p>
           <p>産地：{{ area }}</p>
         </div>
@@ -70,8 +70,12 @@ export default {
     }
   },
   methods: {
-    addToCart() {
-      alert("Item was added to cart.");
+    addToCart: function() {
+      const path = process.env.VUE_APP_BASE_URL + "api/add";
+      let params = new URLSearchParams();
+      params.append("id", this.itemId);
+      params.append("stock", this.numberOfBuy);
+      this.$api.post(path, params).catch(error => console.log(error));
     }
   },
   created() {
