@@ -1,9 +1,7 @@
 from backend import db
 
-
 def init():
-  db.create_all()
-
+    db.create_all()
 
 # 商品
 class Product(db.Model):
@@ -96,7 +94,25 @@ class Material(db.Model):
   def __repr__(self):
     return '<Material %r %r>' % self.menuId, self.productId
 
-# class UserSchema(ma.ModelSchema):
-  # class Meta:
-  #model = Product
-  #fields = ('id','imgName', 'name', 'cost', 'area', 'stock','review')
+
+# ショッピングカート
+class Cart(db.Model):
+    __tablename__ = 'cart'
+    __table_args__ = {'extend_existing': True}
+    id = db.Column(
+        db.Integer,
+        db.ForeignKey(
+          'products.id',
+          onupdate='CASCADE',
+          ondelete='CASCADE'),
+        primary_key=True)
+    stock = db.Column(db.Integer)
+    
+    def to_dict(self):
+        return dict(
+            id = self.id,
+            stock = self.stock
+    )
+
+    def __repr__(self):
+        return '<Cart %r>' % self.id,self.stock
