@@ -30,6 +30,17 @@ export default {
     return {
       menus: []
     };
+  },
+  created() {
+    const path = process.env.VUE_APP_BASE_URL + "api/menu";
+    this.$api
+      .get(path)
+      .then(response => {
+        this.menus = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 </script>
