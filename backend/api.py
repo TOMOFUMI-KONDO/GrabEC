@@ -10,8 +10,17 @@ api = Blueprint('api', __name__)
 @api.route("/products", methods=["GET"])
 def getProductList():
   product_list = db.session.query(Product).all()
-  task_dict = [product.to_dict() for product in product_list]
-  return jsonify(task_dict)
+  product_dict = [product.to_dict() for product in product_list]
+  return jsonify(product_dict)
+
+
+# nameで指定したProductを取得
+@api.route("/products/<string:name>")
+def getProdctFromName(name):
+  product_list = db.session.query(Product).filter(
+      Product.name.like('%' + name + '%')).all()
+  product_dict = [product.to_dict() for product in product_list]
+  return jsonify(product_dict)
 
 
 # idで指定したProductを取得

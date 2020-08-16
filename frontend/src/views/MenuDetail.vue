@@ -90,7 +90,6 @@ export default {
       });
     for (const itemId of this.itemIds) {
       path = process.env.VUE_APP_BASE_URL + "api/product/" + itemId;
-      console.log(path);
       await this.$api
         .get(path)
         .then(response => {
