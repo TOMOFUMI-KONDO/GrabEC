@@ -5,6 +5,8 @@ import Catalog from "@/views/Catalog";
 import Cart from "@/views/Cart";
 import NotFound from "@/views/NotFound.vue";
 import Detail from "@/views/Detail";
+import MenuDetail from "@/views/MenuDetail";
+import SearchResult from "@/views/SearchResult";
 
 Vue.use(VueRouter);
 
@@ -15,9 +17,21 @@ const routes = [
     component: Top
   },
   {
+    path: "/menu-detail",
+    name: "MenuDetail",
+    component: MenuDetail,
+    props: true
+  },
+  {
     path: "/catalog",
     name: "Catalog",
     component: Catalog
+  },
+  {
+    path: "/search-result",
+    name: "SearchResult",
+    component: SearchResult,
+    props: true
   },
   {
     path: "/detail",

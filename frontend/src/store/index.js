@@ -4,8 +4,15 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+  state: { searchWord: "" },
+  mutations: {
+    onSearchWordStateChanged(state, searchWord) {
+      state.searchWord = searchWord;
+    }
+  },
+  getters: {
+    searchWordState(state) {
+      return state.searchWord;
+    }
+  }
 });

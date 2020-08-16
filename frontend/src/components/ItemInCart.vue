@@ -3,7 +3,7 @@
     class="item-in-catalog d-flex align-items-center w-75 mx-auto my-4 px-4 border-dark"
     @click="jumpToDetail"
   >
-    <b-img :src="src" :alt="name" />
+    <b-img :src="src" :alt="name" class="image" />
     <div class="flex-fill ml-5">
       <p>{{ name }}</p>
       <div class="d-flex justify-content-between">
@@ -89,6 +89,11 @@ export default {
 
   &:hover {
     background-color: darken(#fff, 10%);
+  }
+
+  .image {
+    max-width: 200px;
+    max-height: 200px;
   }
 
   .number-of-buy {

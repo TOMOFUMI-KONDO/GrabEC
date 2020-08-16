@@ -1,6 +1,7 @@
 <template>
   <div class="search-window position-relative">
     <b-input
+      v-model="searchWord"
       v-on:keyup.enter="search"
       placeholder="キーワードから商品を探す"
       class="search-input"
@@ -12,9 +13,24 @@
 <script>
 export default {
   name: "SearchWindow",
+  data() {
+    return {
+      searchWord: ""
+    };
+  },
   methods: {
     search() {
-      this.$router.push({ name: "Catalog" });
+      if (this.$router.currentRoute.name === "SearchResult") {
+        console.log("hoge");
+        this.$store.commit("onSearchWordStateChanged", this.searchWord);
+      } else {
+        this.$router
+          .push({
+            name: "SearchResult",
+            params: { searchWord: this.searchWord }
+          })
+          .catch(() => {});
+      }
     }
   }
 };

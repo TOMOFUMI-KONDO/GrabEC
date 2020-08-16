@@ -6,12 +6,12 @@
       <div class="d-flex justify-content-between">
         <div>
           <div class="d-flex">
-            <Tag
-              v-for="(tag, index) in tags"
-              :name="tag"
-              :key="index"
-              class="mx-1"
-            />
+            <!--            <Tag-->
+            <!--              v-for="(tag, index) in tags"-->
+            <!--              :name="tag"-->
+            <!--              :key="index"-->
+            <!--              class="mx-1"-->
+            <!--            />-->
           </div>
           <Stars :review="review" class="mb-4" />
           <p>在庫：{{ stock }}</p>
@@ -45,22 +45,22 @@
 <script>
 import Stars from "@/components/Stars";
 import OutlineButton from "@/components/OutlineButton";
-import Tag from "@/components/Tag";
+// import Tag from "@/components/Tag";
 
 export default {
   name: "Detail",
   props: ["itemId"],
-  components: { Stars, OutlineButton, Tag },
+  components: { Stars, OutlineButton },
   data() {
     return {
       //todo: データベースから取得するようにする
-      imgName: "ベーコン.jpg",
-      name: "みなさまのお墨付きベーコン 標準5枚入り×4パック",
-      tags: ["野菜", "生鮮食品"],
-      cost: 100,
-      stock: 10,
-      area: "東京",
-      review: 4,
+      imgName: "oval.svg",
+      name: null,
+      tags: null,
+      cost: null,
+      stock: null,
+      area: null,
+      review: null,
       numberOfBuy: 1
     };
   },
@@ -73,6 +73,23 @@ export default {
     addToCart() {
       alert("Item was added to cart.");
     }
+  },
+  created() {
+    const path = process.env.VUE_APP_BASE_URL + "api/product/" + this.itemId;
+    this.$api
+      .get(path)
+      .then(response => {
+        const data = response.data;
+        this.imgName = data.imgName;
+        this.name = data.name;
+        this.cost = data.cost;
+        this.stock = data.stock;
+        this.area = data.area;
+        this.review = data.review;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 </script>
