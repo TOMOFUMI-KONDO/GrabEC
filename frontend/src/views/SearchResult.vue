@@ -19,10 +19,11 @@ import ItemInCatalog from "@/components/ItemInCatalog";
 
 export default {
   name: "SearchResult",
-  props: ["searchWord"],
+  props: ["propsSearchWord"],
   components: { ItemInCatalog },
   data() {
     return {
+      searchWord: this.propsSearchWord,
       items: []
     };
   },

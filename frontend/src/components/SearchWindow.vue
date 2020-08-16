@@ -27,7 +27,7 @@ export default {
         this.$router
           .push({
             name: "SearchResult",
-            params: { searchWord: this.searchWord }
+            params: { propsSearchWord: this.searchWord }
           })
           .catch(() => {});
       }
