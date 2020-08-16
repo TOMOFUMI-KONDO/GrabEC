@@ -1,11 +1,11 @@
 from backend import db
-from sqlalchemy.dialects.mysql import MEDIUMBLOB
 
 
 def init():
   db.create_all()
 
 
+# 商品
 class Product(db.Model):
   __tablename__ = 'products'
   id = db.Column(db.Integer, primary_key=True)
@@ -46,6 +46,7 @@ class Product(db.Model):
     return product
 
 
+# オススメする献立
 class Menu(db.Model):
   __tablename__ = 'menus'
   id = db.Column(db.Integer, primary_key=True)
@@ -63,6 +64,22 @@ class Menu(db.Model):
 
   def __repr__(self):
     return '<Menu %r>' % self.displayName
+
+
+# 献立に必要な商品
+class Material(db.Model):
+  __tablename__ = 'materials'
+  menuId = db.Column(db.Integer, primary_key=True)
+  productId = db.Column(db.Integer, primary_key=True)
+
+  def to_dict(self):
+    return dict(
+        menuId=self.menuId,
+        productId=self.productId
+    )
+
+  def __repr__(self):
+    return '<Material %r %r>' % self.menuId, self.productId
 
 # class UserSchema(ma.ModelSchema):
   # class Meta:

@@ -18,7 +18,7 @@ def getProductList():
 def getMenuList():
   menu_list = db.session.query(Menu).all()
   menu_dict = [menu.to_dict() for menu in menu_list]
-  return menu_dict
+  return jsonify(menu_dict)
 
 
 # ショッピングカート
