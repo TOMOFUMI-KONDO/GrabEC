@@ -8,6 +8,7 @@ def init():
 # 商品
 class Product(db.Model):
   __tablename__ = 'products'
+  __table_args__ = {'extend_existing': True}
   id = db.Column(db.Integer, primary_key=True)
   imgName = db.Column(db.String(1000))
   name = db.Column(db.String(1000))
@@ -49,6 +50,7 @@ class Product(db.Model):
 # オススメする献立
 class Menu(db.Model):
   __tablename__ = 'menus'
+  __table_args__ = {'extend_existing': True}
   id = db.Column(db.Integer, primary_key=True)
   imgName = db.Column(db.String(1000))
   displayName = db.Column(db.String(1000))
@@ -69,8 +71,21 @@ class Menu(db.Model):
 # 献立に必要な商品
 class Material(db.Model):
   __tablename__ = 'materials'
-  menuId = db.Column(db.Integer, primary_key=True)
-  productId = db.Column(db.Integer, primary_key=True)
+  __table_args__ = {'extend_existing': True}
+  menuId = db.Column(
+      db.Integer,
+      db.ForeignKey(
+          'menus.id',
+          onupdate='CASCADE',
+          ondelete='CASCADE'),
+      primary_key=True)
+  productId = db.Column(
+      db.Integer,
+      db.ForeignKey(
+          'products.id',
+          onupdate='CASCADE',
+          ondelete='CASCADE'),
+      primary_key=True)
 
   def to_dict(self):
     return dict(

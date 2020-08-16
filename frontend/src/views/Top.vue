@@ -32,7 +32,7 @@ export default {
     };
   },
   created() {
-    const path = process.env.VUE_APP_BASE_URL + "api/menu";
+    const path = process.env.VUE_APP_BASE_URL + "api/menus";
     this.$api
       .get(path)
       .then(response => {

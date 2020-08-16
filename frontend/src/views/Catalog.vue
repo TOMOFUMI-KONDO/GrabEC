@@ -26,7 +26,7 @@ export default {
     };
   },
   created() {
-    const path = process.env.VUE_APP_BASE_URL + "api/product";
+    const path = process.env.VUE_APP_BASE_URL + "api/products";
     this.$api
       .get(path)
       .then(response => {
