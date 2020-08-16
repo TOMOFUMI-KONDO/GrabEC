@@ -30,7 +30,6 @@ export default {
     this.$api
       .get(path)
       .then(response => {
-        console.log(response.data);
         this.items = response.data;
       })
       .catch(error => {
