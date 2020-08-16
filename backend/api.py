@@ -71,6 +71,25 @@ def addToCart():
   return response
 
 
+# カートの商品を削除
+@api.route("/remove", methods=["POST"])
+def removeFromCart():
+  id = request.form['id']
+  removed_cart_item = db.session.query(Cart).filter(Cart.id == id).first()
+  db.session.delete(removed_cart_item)
+  db.session.commit()
+
+  response = jsonify({"success": True})
+  return response
+
+
+@api.route("/cart", methods=["GET"])
+def getCart():
+  cart_list = db.session.query(Cart).all()
+  cart_dict = [cart.to_dict() for cart in cart_list]
+  return jsonify(cart_dict)
+
+
 # ショッピングカート
 # @api.route('/add_to_cart', methods=['POST'])
 # def add_to_cart():

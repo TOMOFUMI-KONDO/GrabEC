@@ -38,12 +38,14 @@ export default {
     jumpToDetail: function() {
       this.$router.push({ name: "Detail", params: { itemId: this.id } });
     },
-    addToCart: function() {
+    addToCart: async function() {
       const path = process.env.VUE_APP_BASE_URL + "api/add";
       let params = new URLSearchParams();
       params.append("id", this.id);
       params.append("stock", "1");
-      this.$api.post(path, params).catch(error => console.log(error));
+      await this.$api.post(path, params).catch(error => console.log(error));
+
+      alert("アイテムをカートに追加しました。");
     }
   }
 };

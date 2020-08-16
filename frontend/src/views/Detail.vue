@@ -70,12 +70,14 @@ export default {
     }
   },
   methods: {
-    addToCart: function() {
+    addToCart: async function() {
       const path = process.env.VUE_APP_BASE_URL + "api/add";
       let params = new URLSearchParams();
       params.append("id", this.itemId);
       params.append("stock", this.numberOfBuy);
-      this.$api.post(path, params).catch(error => console.log(error));
+      await this.$api.post(path, params).catch(error => console.log(error));
+
+      alert("カートにアイテムを追加しました。");
     }
   },
   created() {
