@@ -107,7 +107,7 @@ class Cart(db.Model):
           ondelete='CASCADE'),
         primary_key=True)
     stock = db.Column(db.Integer)
-    
+
     def to_dict(self):
         return dict(
             id = self.id,

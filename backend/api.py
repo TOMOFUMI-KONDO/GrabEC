@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from random import *
 from backend import db
-from backend.models import Product, Menu, Material
+from backend.models import Product, Menu, Material, Cart
 
 api = Blueprint('api', __name__)
 
@@ -55,6 +55,20 @@ def getMaterials(menuId):
       Material.menuId == menuId).all()
   material_dict = [product_id[0] for product_id in product_id_list]
   return jsonify(material_dict)
+
+
+# カートに商品を追加
+@api.route("/add", methods=["POST"])
+def addToCart():
+  id = request.form['id']
+  stock = request.form['stock']
+  cart = Cart(id=id, stock=stock)
+  db.session.add(cart)
+  db.session.commit()
+
+  response = jsonify(cart.to_dict())
+  response.headers['Location'] = '/api/add/%d' % cart.id
+  return response
 
 
 # ショッピングカート
